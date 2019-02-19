@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class ScannerExample {
 
     
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException{
         Scanner s = new Scanner(System.in);
         ArrayList<Account> accounts = new ArrayList<>();
         //execute till stop is entered
@@ -32,13 +32,10 @@ public class ScannerExample {
 
             //print current customers
             else if(addAcc == 2){
-                Writer wr = new FileWriter("Accounts.txt");
                 for(Account a: accounts) {
                     System.out.println(a.toString());
-                    wr.append(a.toString());
-                    wr.append("\n");
+                    writeToFile(accounts);
                 }
-                wr.close();
             }
         
             System.out.println("Proceed again, yes(1), no(2):  ");
@@ -58,12 +55,25 @@ public class ScannerExample {
         return name;
     }//end getName()
     
+    //returns inputed number(from console)
     public static int getNum(){
         System.out.print("Input Account Number: ");
         Scanner s = new Scanner(System.in);
         Integer num = s.nextInt();
         return num;
     }//end getNum()
+    
+    //writes content of arraylist to file
+    public static void writeToFile(ArrayList<Account> accArrList) throws IOException{
+        if(accArrList != null){
+            Writer wr = new FileWriter("Accounts.txt");
+            for(Account a: accArrList){
+                wr.append(a.toString());
+                wr.append("\n");
+            }
+            wr.close();
+        }
+    }
     
     
 }//end ScannerExample class
