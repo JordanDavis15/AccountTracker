@@ -1,13 +1,16 @@
+/*
+    Jordan Davis
+    jadavis7776@yahoo.com
+    2/18/19
+*/
 
-package scannerexample;
+package account_tracker;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class ScannerExample {
 
-    
     
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
@@ -47,15 +50,14 @@ public class ScannerExample {
         Scanner s = new Scanner(System.in);
         String name = s.next();
         return name;
-    }
+    }//end getName()
     
     public static int getNum(){
         System.out.print("Input Account Number: ");
         Scanner s = new Scanner(System.in);
         Integer num = s.nextInt();
         return num;
-    }
-    
+    }//end getNum()
     
     
 }//end ScannerExample class

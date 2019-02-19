@@ -1,4 +1,9 @@
-package scannerexample;
+/*
+    Jordan Davis
+    jadavis7776@yahoo.com
+    2/18/19
+*/
+package account_tracker;
 
 public class Account {
     private String name;
