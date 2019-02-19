@@ -6,23 +6,24 @@
 
 package account_tracker;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ScannerExample {
 
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner s = new Scanner(System.in);
         ArrayList<Account> accounts = new ArrayList<>();
         //execute till stop is entered
         boolean isRunning = true;
         while(isRunning){
-            
-            
 
             //adding an account
-            System.out.print("Add new account(1), see current customers(2):  ");
+            System.out.print("Add new account(1), Display customers/write to file(2):  ");
             
             Integer addAcc = s.nextInt();
             if(addAcc == 1){
@@ -31,9 +32,13 @@ public class ScannerExample {
 
             //print current customers
             else if(addAcc == 2){
-                accounts.forEach((a) -> {
+                Writer wr = new FileWriter("Accounts.txt");
+                for(Account a: accounts) {
                     System.out.println(a.toString());
-                });
+                    wr.append(a.toString());
+                    wr.append("\n");
+                }
+                wr.close();
             }
         
             System.out.println("Proceed again, yes(1), no(2):  ");
@@ -43,6 +48,7 @@ public class ScannerExample {
             }
         }
     }//end main
+    
     
     //returns inputed name(from console)
     public static String getName(){
