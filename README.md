@@ -4,3 +4,4 @@ Account Tracking Program
   - currently only stores information during execution
   - new features added often
   - feel free to contribute
+  - GUI will hopefully be added later(console application for now)

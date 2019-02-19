@@ -34,7 +34,7 @@ public class ScannerExample {
             else if(addAcc == 2){
                 for(Account a: accounts) {
                     System.out.println(a.toString());
-                    writeToFile(accounts);
+                    writeToFile(accounts);   
                 }
             }
         
@@ -73,7 +73,7 @@ public class ScannerExample {
             }
             wr.close();
         }
-    }
+    }//end writeToFile()
     
     
 }//end ScannerExample class
