@@ -1,2 +1,1 @@
-bill	|	3
-frank	|	32
+jan|32

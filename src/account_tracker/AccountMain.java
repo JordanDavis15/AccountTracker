@@ -6,13 +6,14 @@
 
 package account_tracker;
 
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ScannerExample {
+public class AccountMain {
 
     
     public static void main(String[] args) throws IOException{
@@ -33,8 +34,8 @@ public class ScannerExample {
             //print current customers
             else if(addAcc == 2){
                 for(Account a: accounts) {
-                    System.out.println(a.toString());
-                    writeToFile(accounts);   
+                    //System.out.println(a.toString());
+                    writeToFile(accounts);
                 }
             }
         
@@ -76,4 +77,6 @@ public class ScannerExample {
     }//end writeToFile()
     
     
-}//end ScannerExample class
+    
+    
+}//end AccountMain class

@@ -15,7 +15,7 @@ public class Account {
     }
     @Override
     public String toString(){
-        return name + "\t|\t" + num;
+        return name + "|" + num;
     }
     
     
