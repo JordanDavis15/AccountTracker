@@ -10,15 +10,21 @@ package account_tracker;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AccountMain {
 
+    private static ArrayList<Account> accounts = new ArrayList<>();
     
     public static void main(String[] args) throws IOException{
+        //populates accounts with initial ammounts
+        populateAccountsArrayList();
+        
         Scanner s = new Scanner(System.in);
-        ArrayList<Account> accounts = new ArrayList<>();
+        
         //execute till stop is entered
         boolean isRunning = true;
         while(isRunning){
@@ -33,10 +39,9 @@ public class AccountMain {
 
             //print current customers
             else if(addAcc == 2){
-                for(Account a: accounts) {
-                    //System.out.println(a.toString());
-                    writeToFile(accounts);
-                }
+                displayAccounts(); 
+                writeToFile(accounts);
+                
             }
         
             System.out.println("Proceed again, yes(1), no(2):  ");
@@ -76,6 +81,33 @@ public class AccountMain {
         }
     }//end writeToFile()
     
+    public static void populateAccountsArrayList() throws IOException{
+        Path path = Paths.get("Accounts.txt");
+        Scanner scanner = new Scanner(path);
+        scanner.useDelimiter("/");
+        ArrayList<String> accName = new ArrayList<>();
+        ArrayList<Integer> accNum = new ArrayList<>();
+        Integer count = 1;
+        //read line by line
+        while(scanner.hasNext()){
+            if(count % 2 == 1)
+                accName.add(scanner.next());
+            else if(count % 2 == 0)
+                accNum.add(scanner.nextInt());
+            count += 1;
+            if(count > 2)
+                count = 1;
+        }
+        scanner.close();
+        for(Integer i = 0; i < accName.size(); i++){
+            accounts.add(new Account(accName.get(i), accNum.get(i)));
+        }
+    }
+    
+    public static void displayAccounts(){
+        for(Account a: accounts)
+            System.out.println(a.toString());
+    }
     
     
     
