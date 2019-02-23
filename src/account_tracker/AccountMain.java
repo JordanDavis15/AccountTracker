@@ -73,9 +73,11 @@ public class AccountMain {
     public static void writeToFile(ArrayList<Account> accArrList) throws IOException{
         if(accArrList != null){
             Writer wr = new FileWriter("Accounts.txt");
-            for(Account a: accArrList){
-                wr.append(a.toString());
-                wr.append("\n");
+            for(int i = 0; i < accounts.size(); i++){
+                wr.write(accounts.get(i).toString());
+                if(i < accounts.size()-1){
+                    wr.append("\n");
+                }
             }
             wr.close();
         }
@@ -87,26 +89,25 @@ public class AccountMain {
         scanner.useDelimiter("/");
         ArrayList<String> accName = new ArrayList<>();
         ArrayList<Integer> accNum = new ArrayList<>();
-        Integer count = 1;
         //read line by line
         while(scanner.hasNext()){
-            if(count % 2 == 1)
-                accName.add(scanner.next());
-            else if(count % 2 == 0)
-                accNum.add(scanner.nextInt());
-            count += 1;
-            if(count > 2)
-                count = 1;
+            accName.add(scanner.next().trim());
+            String numStr = scanner.next();
+            Integer numInt = Integer.parseInt(numStr);
+            accNum.add(numInt);
         }
         scanner.close();
         for(Integer i = 0; i < accName.size(); i++){
             accounts.add(new Account(accName.get(i), accNum.get(i)));
         }
+
     }
     
     public static void displayAccounts(){
-        for(Account a: accounts)
+        for(Account a: accounts){
             System.out.println(a.toString());
+        }
+        System.out.println("");
     }
     
     
