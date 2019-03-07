@@ -34,7 +34,7 @@ public class AccountMain {
             
             Integer addAcc = s.nextInt();
             if(addAcc == 1){
-                accounts.add(new Account(getNum(),getName(), getAmt()));
+                accounts.add(new Account(getNum(), getName(), getAmt()));
             }
 
             //print current customers

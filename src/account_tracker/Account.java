@@ -18,7 +18,7 @@ public class Account {
     }
     @Override
     public String toString(){
-        return name + "/" + num + "/" + amt + "/";
+        return num + "/" + name + "/" + amt + "/";
     }
     
     
