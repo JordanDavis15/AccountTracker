@@ -7,15 +7,17 @@ package account_tracker;
 
 public class Account {
     private String name;
-    private int num;
+    private int num, amt;
     
-    public Account(String name, int num){
-        this.name = name;
+    public Account(int num, String name, int amt){
         this.num = num;
+        this.name = name;
+        this.amt = amt;
+        
     }
     @Override
     public String toString(){
-        return name + "/" + num + "/";
+        return name + "/" + num + "/" + amt + "/";
     }
     
     
