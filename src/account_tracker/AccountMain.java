@@ -34,7 +34,7 @@ public class AccountMain {
             
             Integer addAcc = s.nextInt();
             if(addAcc == 1){
-                accounts.add(new Account(getName(), getNum()));
+                accounts.add(new Account(getNum(),getName()));
             }
 
             //print current customers
@@ -91,14 +91,15 @@ public class AccountMain {
         ArrayList<Integer> accNum = new ArrayList<>();
         //read line by line
         while(scanner.hasNext()){
-            accName.add(scanner.next().trim());
-            String numStr = scanner.next();
             Integer numInt = Integer.parseInt(numStr);
             accNum.add(numInt);
+	    accName.add(scanner.next().trim());
+            String numStr = scanner.next();
+            
         }
         scanner.close();
         for(Integer i = 0; i < accName.size(); i++){
-            accounts.add(new Account(accName.get(i), accNum.get(i)));
+            accounts.add(new Account( accNum.get(i),accName.get(i)));
         }
 
     }

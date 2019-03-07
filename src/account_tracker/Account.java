@@ -5,6 +5,7 @@
 */
 package account_tracker;
 
+/*This is the account class*/
 public class Account {
     private String name;
     private int num;
