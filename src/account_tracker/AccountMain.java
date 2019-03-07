@@ -34,7 +34,7 @@ public class AccountMain {
             
             Integer addAcc = s.nextInt();
             if(addAcc == 1){
-                accounts.add(new Account(getNum(),getName()));
+                accounts.add(new Account(getNum(),getName(), getAmt()));
             }
 
             //print current customers
@@ -69,6 +69,13 @@ public class AccountMain {
         return num;
     }//end getNum()
     
+    public static int getAmt(){
+        System.out.print("Input Account Amount: ");
+        Scanner s = new Scanner(System.in);
+        Integer amt = s.nextInt();
+        return amt;
+    }
+    
     //writes content of arraylist to file
     public static void writeToFile(ArrayList<Account> accArrList) throws IOException{
         if(accArrList != null){
@@ -89,17 +96,27 @@ public class AccountMain {
         scanner.useDelimiter("/");
         ArrayList<String> accName = new ArrayList<>();
         ArrayList<Integer> accNum = new ArrayList<>();
+        ArrayList<Integer> accAmt = new ArrayList<>();
         //read line by line
         while(scanner.hasNext()){
+            //reads in accNum
+            String numStr = scanner.next().trim();
             Integer numInt = Integer.parseInt(numStr);
             accNum.add(numInt);
+            
+            //reads in accName
 	    accName.add(scanner.next().trim());
-            String numStr = scanner.next();
+            
+            //reads in accAmt
+            numStr = scanner.next().trim();
+            Integer amtInt = Integer.parseInt(numStr);
+            accAmt.add(amtInt);
+            
             
         }
         scanner.close();
         for(Integer i = 0; i < accName.size(); i++){
-            accounts.add(new Account( accNum.get(i),accName.get(i)));
+            accounts.add(new Account( accNum.get(i), accName.get(i), accAmt.get(i)));
         }
 
     }
